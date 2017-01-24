@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
+// import VueResource from 'vue-resource';
 import RouteConfig from './route.config'
 
-Vue.use(ElementUI);
 Vue.use(VueRouter);
+// Vue.use(VueResource);
 
 const router = new VueRouter(RouteConfig);
 
@@ -13,6 +12,6 @@ new Vue({
 	el: '#app',
 	router: router,
 	render: (h) => {
-		return h('div', [h('router-view')])
+		return h('router-view');
 	}
 })

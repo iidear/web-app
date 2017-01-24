@@ -1,8 +1,8 @@
 <template>
 	<div class='header-wrap'>
 		<header>
-			<span class="header-date" v-text='date'></span>
 			<h1>{{user}}'s workspace</h1>
+			<span class="setting"><a class="logout" @click.prevent="logout">退出</a></span>
 		</header>
 	</div>
 </template>
@@ -11,8 +11,11 @@
 	export default {
 		props: ['user'],
 		data () {
-			return {
-				date: new Date().toLocaleDateString()
+			return {}
+		},
+		methods: {
+			logout () {
+				this.$router.push('/login');
 			}
 		}
 	}
@@ -28,6 +31,7 @@
 	.header-wrap header {
 		max-width: 1140px;
 		margin: 0 auto;
+		position: relative;
 	}
 	.header-wrap h1 {
 		padding-left: 20px;
@@ -36,9 +40,16 @@
 		font-weight: 100;
 	}
 
-	.header-wrap .header-date {
-		float: right;
-		margin-right: 12px;
-		font-size: 12px;
+	.header-wrap .setting {
+		position: absolute;
+		right: 20px;
+		top: 0;
+	}
+	.header-wrap .setting .logout {
+		color: #fff;
+	}
+	.header-wrap .setting .logout:hover {
+		border-bottom: 1px solid #fff;
+		cursor: pointer;
 	}
 </style>
