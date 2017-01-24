@@ -1,17 +1,17 @@
-import App from './App.vue';
-import Login from './user/Login.vue';
-import Register from './user/Register.vue';
-import Problem from './problem/list.vue';
-import Analysis from './analysis/analysis.vue';
-import Introduce from './introduce/introduce.vue';
+import App from './pages/App.vue';
+// import Login from './user/Login.vue';
+const Login = resolve => require(['./pages/user/Login.vue'], resolve);
+// const Introduce = resolve => require(['./pages/Introduce.vue'], resolve);
+const Analysis = resolve => require(['./pages/Analysis.vue'], resolve);
+// import Register from './user/Register.vue';
+// import Problem from './problem/list.vue';
+// import Analysis from './analysis/analysis.vue';
+import Introduce from './pages/introduce.vue';
 
 const route = {
 	routes: [{
 		path: '/login',
 		component: Login
-	},{
-		path: '/register',
-		component: Register
 	},{
 		path: '/',
 		component: App,
@@ -19,9 +19,6 @@ const route = {
 		children: [{
 			path: '/introduce',
 			component: Introduce
-		},{
-			path: '/problem',
-			component: Problem
 		},{
 			path: '/analysis',
 			component: Analysis

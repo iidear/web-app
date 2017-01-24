@@ -1,12 +1,15 @@
+var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
 	entry: {
-		app: ['./src/main.js']
+		app: './src/main.js'
 	},
 	output: {
-		path:'./dist',
-		filename:'[name].bundle.js'
+		path: path.resolve(__dirname, './dist'),
+		filename:'[name].bundle.js',
+		publicPath: 'http://127.0.0.1/dist/',
+		nkFilename: 'chunk/[name].js'
 	},
 	module: {
 		loaders: [{
@@ -32,8 +35,10 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			components: path.resolve(__dirname, './src/components')
+			service: path.resolve(__dirname, './src/service/')
 		}
 	},
-	plugins: []
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 }
