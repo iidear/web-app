@@ -1,15 +1,21 @@
 var webpack = require('webpack');
 var path = require('path');
 
+
+// var exec = require('child_process').execSync;
+// exec('rm -rf dist');
+
+
 module.exports = {
 	entry: {
-		app: './src/main.js'
+		app: './src/main.js',
+		vendor: ['vue','vue-router']
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		filename:'[name].bundle.js',
 		publicPath: 'http://127.0.0.1/dist/',
-		nkFilename: 'chunk/[name].js'
+		chunkFilename: 'chunk/[name].js'
 	},
 	module: {
 		loaders: [{
@@ -39,6 +45,8 @@ module.exports = {
 		}
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor'
+		})
 	]
 }
